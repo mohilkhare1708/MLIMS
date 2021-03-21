@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime , date
 
 class Brand(models.Model):
     name = models.CharField(max_length=200)
@@ -39,8 +40,8 @@ class WareHouse(models.Model):
         return self.name 
 
 class Product(models.Model):
-    buying_date = models.DateTimeField()
-    selling_date = models.DateTimeField()
+    buying_date = models.DateTimeField(default=datetime.now)
+    selling_date = models.DateTimeField(default=datetime.now)
     is_sold = models.BooleanField(default = False)
     is_listed = models.BooleanField(default=False)
     unique_identifier = models.CharField(max_length = 300, unique=True)

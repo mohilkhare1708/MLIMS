@@ -7,4 +7,9 @@ urlpatterns = [
     path('view-categories/', views.view_categories , name = 'view_categories'),
     path('view-brands/', views.view_brands , name = 'view_brands'),
     path('view-warehouses/', views.view_warehouses , name = 'view_warehouses'),
+    path('view-agents/', views.view_agents , name = 'view_agents'),
+    path('view-products/', views.view_products , name = 'view_products'),
+    path('products/add/', views.add_product , name = 'add_product'),
+    path('products/fetch/', views.fetch_product , name = 'fetch_product'),
+
 ]

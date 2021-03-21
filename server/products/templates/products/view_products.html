@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <div class="card table-responsive">
+                    <table>
+                        <thead class="table">
+                            <tr>
+                                <th>#</th>
+                                <th>Id</th>
+                                <th>Unique Identifier</th>
+                                <th>Product Model</th>
+                                <th>Company</th>
+                                <th>Category</th>
+                                <th>Warehouse(location)</th>
+                                <th>MRP</th>
+                                <th>Is Listed</th>
+                                <th>Is Sold</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                            <tr>
+
+                                <td>
+                                    <img src="{{ product.product_model.image.url }}" alt="{{ product.product_model.name }}" class="img-fluid" width="50">
+                                </td>
+                                <td>
+                                    {{ product.id }}
+                                </td>
+                                <td>
+                                    {{ product.unique_identifier }}
+                                </td>
+                                <td>
+                                    <a href="">
+                                        {{ product.product_model.name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ product.company.name }}
+                                </td>
+                                <td>
+                                    {{ product.category.name }}
+                                </td> 
+                                <td>
+                                    <a href="https://www.google.com/maps/@{{product.warehouse.latitude}},{{product.warehouse.longitude}},14z">{{ product.warehouse }}</a>
+                                </td>
+                                <td>
+                                    {{ product.product_model.mrp }}
+                                </td>
+                                <td>
+                                    {{ product.is_listed }}
+                                </td>
+                                <td>
+                                    {{ product.is_sold }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

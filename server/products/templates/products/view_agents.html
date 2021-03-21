@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <br>
+        <div class="row m-2">
+            <div class="col-12">
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Warehouse</th>
+                                <th>Admin Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for agent in agents %}
+                            <tr>
+                                <td>{{agent.user.pk}}</td>
+                                <td>{{agent.user.username}}</td>
+                                <td>{{ agent.user.first_name }} {{ agent.user.last_name }}</td>
+                                <td>{{ agent.user.email }}</td>
+                                <td>
+                                    <a href="https://www.google.com/maps/@{{agent.warehouse.latitude}},{{agent.warehouse.longitude}},14z">{{ agent.warehouse }}</a>
+                                </td>
+                                <td>
+                                {% if agent.is_admin %}
+                                <i class="fas fa-check text-success"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger"></i>
+                                {% endif %}
+                            </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}
