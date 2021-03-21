@@ -101,6 +101,14 @@ def view_products(request):
         'products':products,
     }
     return render(request,'products/view_products.html', context)
+
+@login_required
+def view_warehouses(request):
+    warehouses = WareHouse.objects.all()
+    context = {
+        'products':warehouses,
+    }
+    return render(request,'products/view_warehouses.html', context)
     
 
 
