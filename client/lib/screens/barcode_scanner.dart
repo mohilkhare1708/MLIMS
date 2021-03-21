@@ -1,5 +1,5 @@
+import 'package:client/services/barcode_scanner.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class BarcodeScanner extends StatefulWidget {
@@ -10,18 +10,18 @@ class BarcodeScanner extends StatefulWidget {
 }
 
 class _BarcodeScannerState extends State<BarcodeScanner> {
+
   Future<void> getBarcodeData() async {
     print('Getting the barcode');
-    String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-        "#ff6666", "Cancel", true, ScanMode.BARCODE);
+    String barcodeScanRes = await scanBarcodeNormal();
     print(barcodeScanRes);
     Navigator.pop(context, barcodeScanRes);
   }
 
   @override
   void initState() {
-    getBarcodeData();
     super.initState();
+    getBarcodeData();
   }
 
   @override

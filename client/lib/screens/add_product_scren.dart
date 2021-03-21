@@ -1,4 +1,4 @@
-import 'package:client/screens/barcode_scanner.dart';
+import 'package:client/services/barcode_scanner.dart';
 import 'package:flutter/material.dart';
 
 class AddProductScreen extends StatefulWidget {
@@ -11,15 +11,16 @@ class AddProductScreen extends StatefulWidget {
 class _AddProductScreenState extends State<AddProductScreen> {
   String barcodeText;
 
-  Future<void> getBarcodeData() async {
-    var data = await Navigator.pushNamed(context, BarcodeScanner.id);
-    print(data);
-    this.barcodeText = data;
+  Future<void> getData() async {
+    var temp = await scanBarcodeNormal();
+    setState(() {
+      this.barcodeText = temp;
+    });
   }
 
   @override
   void initState() {
-    getBarcodeData();
+    getData();
     super.initState();
   }
 
