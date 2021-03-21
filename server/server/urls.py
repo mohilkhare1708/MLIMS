@@ -18,6 +18,7 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from products.views import landingpage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,6 +45,7 @@ urlpatterns = [
              template_name='users/password_reset_complete.html'
     ),
       name='password_reset_complete'),
+    path('', landingpage, name="landingpage")
 ]
 
 if settings.DEBUG:
