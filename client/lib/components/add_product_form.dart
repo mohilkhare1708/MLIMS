@@ -4,10 +4,10 @@ import 'package:form_validator/form_validator.dart';
 
 class AddProductForm extends StatefulWidget {
   final Function onSubmit;
-  final List<String> categories;
-  final List<String> companies;
-  final List<String> productModels;
-  final List<String> warehouses;
+  final List<dynamic> categories;
+  final List<dynamic> companies;
+  final List<dynamic> productModels;
+  final List<dynamic> warehouses;
 
   AddProductForm({
     @required this.categories,
@@ -22,10 +22,10 @@ class AddProductForm extends StatefulWidget {
 }
 
 class _AddProductFormState extends State<AddProductForm> {
-  List<String> categories;
-  List<String> companies;
-  List<String> productModels;
-  List<String> warehouses;
+  List<dynamic> categories;
+  List<dynamic> companies;
+  List<dynamic> productModels;
+  List<dynamic> warehouses;
 
   GlobalKey<FormState> _form = GlobalKey<FormState>();
   String category;
@@ -49,136 +49,134 @@ class _AddProductFormState extends State<AddProductForm> {
   Widget build(BuildContext context) {
     return Form(
       key: this._form,
-      child: ListView(
-        children: [
-          Text(
-            "Add Product",
-            style: TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.w900,
-                color: Colors.lightBlueAccent),
-            textAlign: TextAlign.center,
-          ),
-          Divider(
-            height: 30.0,
-          ),
-          // Company
-          DropdownButtonFormField(
-            validator: ValidationBuilder().required().build(),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Company",
+      child: Expanded(
+        child: ListView(
+          children: [
+            Text(
+              "Add Product",
+              style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.lightBlueAccent),
+              textAlign: TextAlign.center,
             ),
-            onChanged: (value) {
-              this.company = value;
-            },
-            items: this
-                .companies
-                .map((company) => DropdownMenuItem(
-                      value: company,
-                      child: Text(company),
-                    ))
-                .toList(),
-          ),
-
-          Divider(),
-
-          // Category
-          DropdownButtonFormField(
-            validator: ValidationBuilder().required().build(),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Category",
+            Divider(
+              height: 30.0,
             ),
-            onChanged: (value) {
-              this.category = value;
-            },
-            items: this
-                .categories
-                .map((category) => DropdownMenuItem(
-                      value: category,
-                      child: Text(category),
-                    ))
-                .toList(),
-          ),
-
-          Divider(),
-
-          // Warehouse
-          DropdownButtonFormField(
-            validator: ValidationBuilder().required().build(),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Warehouse",
+            // Company
+            DropdownButtonFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Company",
+              ),
+              onChanged: (value) {
+                this.company = value;
+              },
+              items: this
+                  .companies
+                  .map((company) => DropdownMenuItem(
+                        value: company['pk'],
+                        child: Text(company['name']),
+                      ))
+                  .toList(),
             ),
-            onChanged: (value) {
-              this.warehouse = value;
-            },
-            items: this
-                .warehouses
-                .map((warehouse) => DropdownMenuItem(
-                      value: warehouse,
-                      child: Text(warehouse),
-                    ))
-                .toList(),
-          ),
 
-          Divider(),
+            Divider(),
 
-          // ProductModel
-          DropdownButtonFormField(
-            validator: ValidationBuilder().required().build(),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Product Model",
+            // Category
+            DropdownButtonFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Category",
+              ),
+              onChanged: (value) {
+                this.category = value;
+              },
+              items: this
+                  .categories
+                  .map((category) => DropdownMenuItem(
+                        value: category['pk'],
+                        child: Text(category['name']),
+                      ))
+                  .toList(),
             ),
-            onChanged: (value) {
-              this.productModel = value;
-            },
-            items: this
-                .productModels
-                .map((productModel) => DropdownMenuItem(
-                      value: productModel,
-                      child: Text(productModel),
-                    ))
-                .toList(),
-          ),
 
-          Divider(),
+            Divider(),
 
-          TextFormField(
-            textAlign: TextAlign.center,
-            keyboardType: TextInputType.number,
-            onChanged: (value) {
-              this.barcode = value;
-            },
-            decoration: InputDecoration(
-              labelText: 'Barcode',
-              border: OutlineInputBorder(),
+            // Warehouse
+            DropdownButtonFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Warehouse",
+              ),
+              onChanged: (value) {
+                this.warehouse = value;
+              },
+              items: this
+                  .warehouses
+                  .map((warehouse) => DropdownMenuItem(
+                        value: warehouse['pk'],
+                        child: Text(warehouse['name']),
+                      ))
+                  .toList(),
             ),
-            validator: ValidationBuilder().required("Required").build(),
-          ),
+          
+            Divider(),
 
-          SizedBox(
-            height: 30.0,
-          ),
+            // ProductModel
+            DropdownButtonFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Model",
+              ),
+              onChanged: (value) {
+                this.productModel = value;
+              },
+              items: this
+                  .productModels
+                  .map((productModel) => DropdownMenuItem(
+                        value: productModel['pk'],
+                        child: Text(productModel['name']),
+                      ))
+                  .toList(),
+            ),
 
-          RoundedButton(
-            title: 'Add Product',
-            colour: Colors.lightBlueAccent,
-            onPressed: () {
-              if (_form.currentState.validate()) {
-                var data = {
-                  'unique_identifier': this.barcode,
-                  'warehouse': this.warehouse,
-                  'category': this.category,
-                  'product_model': this.productModel,
-                };
-                this.onSubmit(data);
-              }
-            },
-          ),
-        ],
+            Divider(),
+
+            TextFormField(
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                this.barcode = value;
+              },
+              decoration: InputDecoration(
+                labelText: 'Barcode',
+                border: OutlineInputBorder(),
+              ),
+              validator: ValidationBuilder().required("Required").build(),
+            ),
+
+            SizedBox(
+              height: 30.0,
+            ),
+
+            RoundedButton(
+              title: 'Add Product',
+              colour: Colors.lightBlueAccent,
+              onPressed: () {
+                if (_form.currentState.validate()) {
+                  var data = {
+                    'unique_identifier': this.barcode,
+                    'warehouse': this.warehouse,
+                    'category': this.category,
+                    'product_model': this.productModel,
+                  };
+                  this.onSubmit(data);
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

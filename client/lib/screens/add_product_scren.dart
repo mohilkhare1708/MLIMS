@@ -1,6 +1,7 @@
 import 'package:client/components/add_product_form.dart';
-import 'package:client/services/barcode_scanner.dart';
+import 'package:client/services/api.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class AddProductScreen extends StatefulWidget {
   static const String id = 'add_product_screen';
@@ -10,35 +11,49 @@ class AddProductScreen extends StatefulWidget {
 }
 
 class _AddProductScreenState extends State<AddProductScreen> {
-  String barcodeText;
+  var formData;
+  bool showSpinner = true;
 
   Future<void> getData() async {
-    var temp = await scanBarcodeNormal();
+    var data = await Api().getFormData();
     setState(() {
-      this.barcodeText = temp;
+      this.formData = data;
+      this.showSpinner = false;
     });
   }
 
   @override
   void initState() {
-    // getData();
+    getData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-      margin: EdgeInsets.all(8.0),
-      child: AddProductForm(
-          categories: ['Laptop'],
-          companies: ['Laptop'],
-          productModels: ['Laptop'],
-          warehouses: ['Laptop'],
-          onSubmit: (data) {
-            //todo: add api call
-            print(data);
-          }),
-    ));
+    return ModalProgressHUD(
+      inAsyncCall: showSpinner,
+      child: Center(
+          child: Container(
+        margin: EdgeInsets.all(8.0),
+        child: AddProductForm(
+            categories: this.formData['category'],
+            companies: this.formData['company'],
+            productModels: this.formData['product_model'],
+            warehouses: this.formData['warehouse'],
+            onSubmit: (data) async {
+              print(data);
+              setState(() {
+                this.showSpinner = true;
+              });
+              var res = await Api().addProduct(data);
+              print('Response: $res');
+              setState(() {
+                this.showSpinner = false;
+              });
+            }),
+      )),
+    );
   }
 }
+
+
