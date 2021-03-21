@@ -14,3 +14,7 @@ def view_categories(request):
         'categories':categories,
     }
     return render(request,'products/view_categories.html', context)
+    
+def landingpage(request):
+    context={}
+    return render(request, 'landingpage.html', context)
