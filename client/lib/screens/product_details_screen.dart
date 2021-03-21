@@ -1,3 +1,4 @@
+import 'package:client/components/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:client/services/barcode_scanner.dart';
 
@@ -40,7 +41,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Nav,
+      child: ProductDetailsCard(
+        productDetails: dummy,
+      ),
     );
   }
 }
