@@ -27,8 +27,8 @@ class WareHouse(models.Model):
     longitude = models.DecimalField(max_digits=20, decimal_places=8, default=Decimal(0.00))
 
 class Product(models.Model):
-    buying date = models.DateTimeField()
-    selling date = models.DateTimeField()
+    buying_date = models.DateTimeField()
+    selling_date = models.DateTimeField()
     is_sold = models.Boolean(default = False)
 
     # Foreign Keys 
