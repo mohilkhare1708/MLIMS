@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 1,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: Text('Invertory Manager'),
