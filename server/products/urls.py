@@ -9,7 +9,7 @@ urlpatterns = [
     path('view-warehouses/', views.view_warehouses , name = 'view_warehouses'),
     path('view-agents/', views.view_agents , name = 'view_agents'),
     path('view-products/', views.view_products , name = 'view_products'),
-    path('view-products/<int:pk>/', views.product , name = 'view_products'),
+    path('view-products/<int:pk>/', views.product , name = 'product'),
     path('products/add/', views.add_product , name = 'add_product'),
     path('products/fetch/', views.fetch_product , name = 'fetch_product'),
 

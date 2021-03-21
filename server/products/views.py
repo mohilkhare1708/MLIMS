@@ -115,11 +115,11 @@ def product(request,pk):
     }
     return render(request,'products/product.html', context)
 
-
+@login_required
 def view_warehouses(request):
     warehouses = WareHouse.objects.all()
     context = {
-        'products':warehouses,
+        'warehouses':warehouses,
     }
     return render(request,'products/view_warehouses.html', context)
     

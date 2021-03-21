@@ -37,7 +37,7 @@
                                     {{ product.unique_identifier }}
                                 </td>
                                 <td>
-                                    <a href="">
+                                    <a href="{% url 'products:product' product.pk %}">
                                         {{ product.product_model.name }}
                                     </a>
                                 </td>
