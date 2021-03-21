@@ -65,80 +65,84 @@ class _AddProductFormState extends State<AddProductForm> {
             ),
             // Company
             DropdownButtonFormField(
+              value: this.company,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Company",
               ),
-              onChanged: (value) {
-                this.company = value;
-              },
               items: this
                   .companies
                   .map((company) => DropdownMenuItem(
-                        value: company['pk'],
+                        value: company['pk'].toString(),
                         child: Text(company['name']),
                       ))
                   .toList(),
+              onChanged: (value) {
+                this.company = value;
+              },
             ),
 
             Divider(),
 
             // Category
             DropdownButtonFormField(
+              value: this.category,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Category",
               ),
-              onChanged: (value) {
-                this.category = value;
-              },
               items: this
                   .categories
                   .map((category) => DropdownMenuItem(
-                        value: category['pk'],
+                        value: category['pk'].toString(),
                         child: Text(category['name']),
                       ))
                   .toList(),
+              onChanged: (value) {
+                this.category = value;
+              },
             ),
 
             Divider(),
 
             // Warehouse
             DropdownButtonFormField(
+              value: this.warehouse,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Warehouse",
               ),
-              onChanged: (value) {
-                this.warehouse = value;
-              },
               items: this
                   .warehouses
                   .map((warehouse) => DropdownMenuItem(
-                        value: warehouse['pk'],
+                        value: warehouse['pk'].toString(),
                         child: Text(warehouse['name']),
                       ))
                   .toList(),
+              onChanged: (value) {
+                this.warehouse = value;
+              },
             ),
-          
+
             Divider(),
 
             // ProductModel
             DropdownButtonFormField(
+              value: this.productModel,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Model",
               ),
-              onChanged: (value) {
-                this.productModel = value;
-              },
               items: this
                   .productModels
                   .map((productModel) => DropdownMenuItem(
-                        value: productModel['pk'],
+                        value: productModel['pk'].toString(),
                         child: Text(productModel['name']),
                       ))
                   .toList(),
+              onChanged: (value) {
+                this.productModel = value;
+              },
             ),
 
             Divider(),
@@ -166,12 +170,14 @@ class _AddProductFormState extends State<AddProductForm> {
               onPressed: () {
                 if (_form.currentState.validate()) {
                   var data = {
+                    'company': this.company,
                     'unique_identifier': this.barcode,
                     'warehouse': this.warehouse,
                     'category': this.category,
                     'product_model': this.productModel,
                   };
                   this.onSubmit(data);
+                  _form.currentState.reset();
                 }
               },
             ),

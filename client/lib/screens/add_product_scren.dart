@@ -16,6 +16,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   Future<void> getData() async {
     var data = await Api().getFormData();
+    print(data);
     setState(() {
       this.formData = data;
       this.showSpinner = false;
@@ -55,5 +56,3 @@ class _AddProductScreenState extends State<AddProductScreen> {
     );
   }
 }
-
-
