@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from .models import Category,Brand
+from .models import Category,Brand, WareHouse
 
 # Create your views here.
 app_name = 'products'
@@ -25,6 +25,13 @@ def view_brands(request):
         'brands':brands,
     }
     return render(request,'products/view_brands.html', context)
+@login_required
+def view_warehouses(request):
+    warehouses = WareHouse.objects.all()
+    context = {
+        'warehouses':warehouses,
+    }
+    return render(request,'products/view_warehouses.html', context)
     
 def landingpage(request):
     context={}
