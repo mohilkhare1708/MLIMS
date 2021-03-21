@@ -1,4 +1,5 @@
 import 'package:client/components/rounded_button.dart';
+import 'package:client/services/barcode_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 
@@ -34,6 +35,8 @@ class _AddProductFormState extends State<AddProductForm> {
   String warehouse;
   String barcode;
   Function onSubmit;
+
+  TextEditingController _barcodeController = TextEditingController();
 
   @override
   void initState() {
@@ -147,17 +150,31 @@ class _AddProductFormState extends State<AddProductForm> {
 
             Divider(),
 
-            TextFormField(
-              textAlign: TextAlign.center,
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                this.barcode = value;
-              },
-              decoration: InputDecoration(
-                labelText: 'Barcode',
-                border: OutlineInputBorder(),
+            ListTile(
+              title: TextFormField(
+                controller: _barcodeController,
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  this.barcode = value;
+                },
+                decoration: InputDecoration(
+                  labelText: 'Barcode',
+                  border: OutlineInputBorder(),
+                ),
+                validator: ValidationBuilder().required("Required").build(),
               ),
-              validator: ValidationBuilder().required("Required").build(),
+              trailing: GestureDetector(
+                onTap: () async {
+                  var temp = await scanBarcodeNormal();
+                  print(temp);
+                  setState(() {
+                    this.barcode = temp;
+                    _barcodeController.text = temp;
+                  });
+                },
+                child: Icon(Icons.flip),
+              ),
             ),
 
             SizedBox(

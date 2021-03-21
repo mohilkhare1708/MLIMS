@@ -47,6 +47,18 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 this.showSpinner = true;
               });
               var res = await Api().addProduct(data);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                        content: Text('Product Added Successfully'),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('Ok'))
+                        ],
+                      ));
               print('Response: $res');
               setState(() {
                 this.showSpinner = false;
