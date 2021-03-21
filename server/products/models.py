@@ -19,8 +19,8 @@ class Category(models.Model):
 class ProductModel(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    company = models.ForeignKey(, on_delete=models.CASCADE)
-    mrp = models.DecimalField(max_digits=20, decimal_places=2, default=Decimal(0.00))
+    company = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    mrp = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
     image = models.ImageField(default = 'default.jpg',upload_to = 'products')
 
     def __str__(self):
@@ -41,7 +41,7 @@ class WareHouse(models.Model):
 class Product(models.Model):
     buying_date = models.DateTimeField()
     selling_date = models.DateTimeField()
-    is_sold = models.Boolean(default = False)
+    is_sold = models.BooleanField(default = False)
     is_listed = models.BooleanField(default=False)
     unique_identifier = models.CharField(max_length = 300, unique=True)
     # Foreign Keys 

@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     # 'channels',
     # Apps 
     'users.apps.UsersConfig',
-    'categories.apps.CategoriesConfig',
     'orders.apps.OrdersConfig',
     'products.apps.ProductsConfig',
     'agents.apps.AgentsConfig',
