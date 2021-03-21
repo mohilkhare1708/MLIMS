@@ -139,7 +139,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "MLIMS",
 
     # square logo to use for your site, must be present in static files, used for favicon and brand on top left
-    "site_logo": "books/img/logo.png",
+    "site_logo": "assets/img/logo.png",
 
     # Welcome text on the login screen
     "welcome_sign": "Welcome to the MLIMS",
@@ -254,8 +254,8 @@ STATICFILES_DIRS = [
 
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'queues:index'
-LOGOUT_REDIRECT_URL = 'landingpage'
+LOGIN_REDIRECT_URL = 'products:index'
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
