@@ -6,7 +6,7 @@ class Api {
   Future<dynamic> getProduct(String uniqueIdentifier) async {
     Uri url = Uri.http(
       BASE_URL,
-      'home/products/fetch/$uniqueIdentifier/',
+      'home/products/fetch/',
     );
     print(url);
     var data = await send(

@@ -31,21 +31,21 @@ class HomeScreen extends StatelessWidget {
           tabs: const <Widget>[
             Tab(
               icon: Icon(
-                Icons.inventory,
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Inventory',
-                style: TextStyle(color: Colors.blue),
-              ),
-            ),
-            Tab(
-              icon: Icon(
                 Icons.add,
                 color: Colors.blue,
               ),
               child: Text(
                 'Add',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.inventory,
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Inventory',
                 style: TextStyle(color: Colors.blue),
               ),
             ),

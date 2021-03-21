@@ -1,4 +1,3 @@
-import 'package:client/components/product_details.dart';
 import 'package:client/components/rounded_button.dart';
 import 'package:client/screens/product_details_screen.dart';
 import 'package:client/services/api.dart';
@@ -6,7 +5,7 @@ import 'package:client/services/barcode_scanner.dart';
 import 'package:flutter/material.dart';
 
 class InventoryScreen extends StatelessWidget {
-  List<dynamic> data = [
+  static const List<dynamic> data = [
     {
       "name": "Lenovo Legion 5i",
       "description":
