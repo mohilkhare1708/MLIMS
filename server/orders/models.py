@@ -11,7 +11,7 @@ class Order(models.Model):
     order_date = models.DateTimeField()
     completed = models.BooleanField()
     # Foreign Key
-    customer = models.ForeignKey(Customers , on_delete = models.SET_NULL , null = True , blank = True)
+    customer = models.ForeignKey(Customer , on_delete = models.SET_NULL , null = True , blank = True)
     agent = models.ForeignKey(User , on_delete = models.SET_NULL , null = True , blank = True)
 
 
