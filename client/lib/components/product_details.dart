@@ -57,51 +57,58 @@ class ProductDetailsScreen extends StatelessWidget {
                   Divider(thickness: 1.0),
                   ListTile(
                     // leading: Icon(Icons.phone),
-                    title: Text(this.ProductDetails['MRP']),
+                    title: Text('MRP'),
                     subtitle: Text(this.ProductDetails['mrp']),
                   ),
                   ListTile(
                     // leading: Icon(Icons.phone),
-                    title: Text(this.ProductDetails['is_sold']),
-                    subtitle: Text(this.ProductDetails['is_sold']),
+                    title: Text('warehouse'),
+                    subtitle: Text(this.ProductDetails['warehouse']),
+                  ),
+                  ListTile(
+                    // leading: Icon(Icons.phone),
+                    title: Text('latitude'),
+                    subtitle: Text(this.ProductDetails['latitude']),
+                  ),
+                  ListTile(
+                    // leading: Icon(Icons.phone),
+                    title: Text('longitude'),
+                    subtitle: Text(this.ProductDetails['longitude']),
+                  ),
+                  ListTile(
+                    // leading: Icon(Icons.phone),
+                    title: Text('region'),
+                    subtitle: Text(this.ProductDetails['region']),
                   ),
                   ListTile(
                     // leading: Icon(Icons.phone),
                     title: Text(this.ProductDetails['buying_date']),
                     subtitle: Text(this.ProductDetails['buying_date']),
                   ),
+
                   ListTile(
                     // leading: Icon(Icons.phone),
                     title: Text(this.ProductDetails['selling_date']),
                     subtitle: Text(this.ProductDetails['selling_date']),
                   ),
 
-                  ListTile(
-                    // leading: Icon(Icons.phone),
-                    title: Text(this.ProductDetails['is_listed']),
-                    subtitle: Text(this.ProductDetails['is_listed']),
-                  ),
-                  ListTile(
-                    // leading: Icon(Icons.phone),
-                    title: Text(this.ProductDetails['unique_identifier']),
-                    subtitle: Text(this.ProductDetails['unique_identifier']),
-                  ),
-                  ListTile(
-                    // leading: Icon(Icons.phone),
-                    title: Text(this.ProductDetails['warehouse']),
-                    subtitle: Text(this.ProductDetails['warehouse']),
-                  ),
-                  ListTile(
-                    // leading: Icon(Icons.phone),
-                    title: Text(this.ProductDetails['category']),
-                    subtitle: Text(this.ProductDetails['category']),
-                  ),
+                  // ListTile(
+                  //   // leading: Icon(Icons.phone),
+                  //   title: Text(this.ProductDetails['is_listed']),
+                  //   subtitle: Text(this.ProductDetails['is_listed']),
+                  // ),
 
-                  ListTile(
-                    // leading: Icon(Icons.phone),
-                    title: Text(this.ProductDetails['product_model']),
-                    subtitle: Text(this.ProductDetails['product_model']),
-                  ),
+                  // ListTile(
+                  //   // leading: Icon(Icons.phone),
+                  //   title: Text(this.ProductDetails['category']),
+                  //   subtitle: Text(this.ProductDetails['category']),
+                  // ),
+
+                  // ListTile(
+                  //   // leading: Icon(Icons.phone),
+                  //   title: Text(this.ProductDetails['product_model']),
+                  //   subtitle: Text(this.ProductDetails['product_model']),
+                  // ),
                   Divider(thickness: 1.0),
                   // Padding(
                   //   padding: const EdgeInsets.all(8.0),
