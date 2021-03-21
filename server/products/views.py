@@ -60,15 +60,21 @@ def add_product(request):
         )
         return JsonResponse({"added" : "ok"},safe=False)
     else:
-        warehouses = list(WareHouse.objects.all())
-        category = list(Category.objects.all())
-        company = list(Brand.objects.all())
-        product_model = list(ProductModel.objects.all())
+        warehouses = list(map(lambda x : {'pk':x.pk, 'name':x.name},WareHouse.objects.all()))
+        category = list(map(lambda x : {'pk':x.pk, 'name':x.name},Category.objects.all()))
+        company = list(map(lambda x : {'pk':x.pk, 'name':x.name},Brand.objects.all()))
+        product_model = list(map(lambda x : {'pk':x.pk, 'name':x.name},ProductModel.objects.all()))
+        # data = {
+        #     'warehouses' : serialize('json', warehouses),
+        #     "category" : serialize('json',category),
+        #     "company" : serialize('json',company),
+        #     "product_model" : serialize('json',product_model)
+        # }
         data = {
-            'warehouses' : serialize('json', warehouses),
-            "category" : serialize('json',category),
-            "company" : serialize('json',company),
-            "product_model" : serialize('json',product_model)
+            'warehouse' : warehouses,
+            'category' : category,
+            'company' : company,
+            'product_model' : product_model
         }
         return JsonResponse(data, safe=False)
 
@@ -76,7 +82,6 @@ def add_product(request):
 def fetch_product(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        print(data)
         unique_identifier = data['unique_identifier']
         product = get_object_or_404(Product , unique_identifier = unique_identifier)
         data = {
@@ -101,7 +106,16 @@ def view_products(request):
         'products':products,
     }
     return render(request,'products/view_products.html', context)
-    
+
+@login_required
+def product(request,pk):
+    product = get_object_or_404(Product,pk=pk)
+    context = {
+        'product' : product,
+    }
+    return render(request,'products/product.html', context)
+
+
 
 
 def landingpage(request):
