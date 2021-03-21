@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Categories{% endblock title %}
+
+{% block content %}
+<h1 class="ml-4">Warehouses</h1>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <br>
+        <div class="row m-2">
+            <div class="col-6" style="max-width:100%; flex:0 0 100%;">
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name </th>
+                                <th>Region</th>
+                                <th>Description</th>
+                                <th>Address 1</th>
+                                <th>Address 2</th>
+                                <th>Locate on Map</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for warehouse in warehouses %}
+                            <tr>
+                                <td>{{ warehouse.pk }}. </td>
+                                <td>{{ warehouse.name }}</td>
+                                <td>{{ warehouse.region }}</td>
+                                <td>{{ warehouse.description }}</td>
+                                <td>{{ warehouse.address1 }}</td>
+                                <td>{{ warehouse.address2 }}</td>
+                                <td><a href="http://maps.google.com/maps?q={{warehouse.latitude}},{{warehouse.longitude}}"><button type="button" class="btn btn-outline-primary">Locate</button></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% comment %} <div class="col-8">
+                <div class="row">
+                    {% for warehouse in warehouses %}
+                    <div class="col-4">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="https://maps.google.com/maps/api/staticmap?center={{warehouse.latitude}},{{warehouse.longitude}}&zoom=8&size=400x300&sensor=false" alt="Card image cap">
+                            <div id="map" style="width: 400px; height: 300px"></div>
+                            <script type="text/javascript"> 
+                                var map = new GMap2(document.getElementById("map"));
+                                map.setCenter(new GLatLng(51.49, -0.12), 8);
+                            </script>
+                            <div class="card-body">
+                              <h5 class="card-title">{{ warehouse.name }}</h5>
+                              <p class="card-text">{{ warehouse.description|truncatechars:100 }}</p>
+                              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            </div>
+                          </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

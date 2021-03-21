@@ -116,6 +116,13 @@ def product(request,pk):
     return render(request,'products/product.html', context)
 
 
+def view_warehouses(request):
+    warehouses = WareHouse.objects.all()
+    context = {
+        'products':warehouses,
+    }
+    return render(request,'products/view_warehouses.html', context)
+    
 
 
 def landingpage(request):
