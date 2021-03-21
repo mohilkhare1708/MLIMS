@@ -1,4 +1,7 @@
+import 'package:client/screens/add_product_scren.dart';
+import 'package:client/screens/invoice_screen.dart';
 import 'package:client/screens/login_screen.dart';
+import 'package:client/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,12 +21,23 @@ class HomeScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            // todo: Add all the screens containers in this list
-            LoginScreen(),
+            ProductDetailsScreen(),
+            AddProductScreen(),
+            InvoiceScreen(),
           ],
         ),
         bottomNavigationBar: TabBar(
           tabs: const <Widget>[
+            Tab(
+              icon: Icon(
+                Icons.inventory,
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Inventory',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
             Tab(
               icon: Icon(
                 Icons.add,
@@ -31,6 +45,16 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Text(
                 'Add',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.receipt,
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Invoice',
                 style: TextStyle(color: Colors.blue),
               ),
             ),
