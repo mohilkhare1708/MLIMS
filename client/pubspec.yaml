@@ -27,6 +27,7 @@ dependencies:
   form_validator: ^0.1.7
   flutter_barcode_scanner: ^1.0.2
   flutter_spinkit: "^4.1.2"
+  http: ^0.13.1
 
 
 
