@@ -1,3 +1,4 @@
+import 'package:client/components/add_product_form.dart';
 import 'package:client/services/barcode_scanner.dart';
 import 'package:flutter/material.dart';
 
@@ -20,14 +21,24 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   @override
   void initState() {
-    getData();
+    // getData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Add Product Screen: ${this.barcodeText}'),
-    );
+        child: Container(
+      margin: EdgeInsets.all(8.0),
+      child: AddProductForm(
+          categories: ['Laptop'],
+          companies: ['Laptop'],
+          productModels: ['Laptop'],
+          warehouses: ['Laptop'],
+          onSubmit: (data) {
+            //todo: add api call
+            print(data);
+          }),
+    ));
   }
 }
