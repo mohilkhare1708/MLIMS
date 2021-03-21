@@ -255,6 +255,7 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'products:index'
+LOGOUT_REDIRECT_URL = 'landingpage'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
