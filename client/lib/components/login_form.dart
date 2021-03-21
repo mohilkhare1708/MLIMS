@@ -40,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
               labelText: 'Email',
               border: OutlineInputBorder(),
             ),
-            validator: ValidationBuilder().email('Required').build(),
+            validator: ValidationBuilder().email('Enter a valid email').build(),
           ),
           SizedBox(
             height: 30.0,
