@@ -21,5 +21,7 @@ class OrderItemAdmin(admin.ModelAdmin):
     search_fields = ('id', 'product', 'order')
     list_per_page = 20
     
-admin.site.register(models.Profile , ProfileAdmin)
+admin.site.register(models.Customer , CustomerAdmin)
+admin.site.register(models.Order , OrderAdmin)
+admin.site.register(models.OrderItem , OrderItemAdmin)
 # Register your models here.
