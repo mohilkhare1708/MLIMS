@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: HomeScreen.id,
+    initialRoute: LoginScreen.id,
     routes: {
       LoginScreen.id: (BuildContext context) => LoginScreen(),
       HomeScreen.id: (BuildContext context) => HomeScreen(),
