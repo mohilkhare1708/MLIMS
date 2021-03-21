@@ -1,4 +1,5 @@
 import 'package:client/screens/add_product_scren.dart';
+import 'package:client/screens/inventory_screen.dart';
 import 'package:client/screens/invoice_screen.dart';
 import 'package:client/screens/login_screen.dart';
 import 'package:client/screens/product_details_screen.dart';
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            ProductDetailsScreen(),
+            InventoryScreen(),
             AddProductScreen(),
             InvoiceScreen(),
           ],
